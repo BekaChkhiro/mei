@@ -192,7 +192,7 @@ export default function Home() {
         <FloatingHearts />
 
         <div className="text-center mb-10 fade-in relative z-10">
-          <h1 className="text-3xl md:text-4xl font-bold shimmer mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-4">
             გასაგრძელებლად
           </h1>
           <p className="text-xl md:text-2xl text-pink-700 fade-in-delay">
@@ -279,14 +279,14 @@ export default function Home() {
             სილამაზე დადასტურდა! ✨
           </p>
 
-          <h1 className="text-4xl md:text-6xl font-bold shimmer mb-4 float fade-in-delay">
+          <h1 className="text-4xl md:text-6xl font-bold text-pink-600 mb-2 float fade-in-delay">
             მეი,
           </h1>
-          <h2 className="text-3xl md:text-5xl font-bold text-pink-700 mb-10 float fade-in-delay-2">
+          <h2 className="text-3xl md:text-5xl font-bold text-pink-700 mb-6 float fade-in-delay-2">
             იქნები ჩემი ვალენტინი?
           </h2>
 
-          <div className="text-7xl mb-12 heart-beat">💕</div>
+          <div className="text-5xl mb-8 heart-beat">💕</div>
 
           <div className="flex gap-6 items-center justify-center flex-wrap">
             <button
@@ -331,7 +331,7 @@ export default function Home() {
             💕
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold shimmer mb-6 float fade-in-delay">
+          <h1 className="text-5xl md:text-7xl font-bold text-pink-600 mb-6 float fade-in-delay">
             მიყვარხარ
           </h1>
 
@@ -357,8 +357,8 @@ export default function Home() {
         <FloatingHearts />
 
         <div className="text-center mb-6 relative z-10 fade-in">
-          <h1 className="text-3xl md:text-4xl font-bold shimmer mb-2">
-            შენი საჩუქარი
+          <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-2">
+            შენი საჩუქარი 🎁
           </h1>
           <p className="text-xl text-pink-600">
             მეისთვის სიყვარულით 💕
