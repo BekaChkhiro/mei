@@ -285,7 +285,7 @@ export default function Home() {
             {/* @ts-ignore */}
             <model-viewer
               src="/bike.glb"
-              ios-src="/bike.usdz"
+              ios-src="https://pub-76cefa6348404990a1ef5271ccf16230.r2.dev/bike.usdz"
               ar
               ar-modes="webxr scene-viewer quick-look"
               camera-controls
