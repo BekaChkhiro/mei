@@ -335,8 +335,8 @@ export default function Home() {
             მიყვარხარ
           </h1>
 
-          <p className="text-2xl text-pink-600 mb-12 fade-in-delay-2">
-            ჩემო საყვარელო მეი 💝
+          <p className="text-4xl mb-12 fade-in-delay-2">
+            💕
           </p>
 
           <button
