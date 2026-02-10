@@ -10,45 +10,310 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 30%, #fbcfe8 60%, #f9a8d4 100%);
+  overflow-x: hidden;
+}
+
+/* Floating Hearts Background */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatHeart 15s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Glowing Camera Frame */
+.camera-frame {
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ec4899, #f472b6, #ec4899);
+  padding: 6px;
+  box-shadow:
+    0 0 30px rgba(236, 72, 153, 0.5),
+    0 0 60px rgba(236, 72, 153, 0.3),
+    0 0 90px rgba(236, 72, 153, 0.2);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 30px rgba(236, 72, 153, 0.5),
+      0 0 60px rgba(236, 72, 153, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(236, 72, 153, 0.7),
+      0 0 80px rgba(236, 72, 153, 0.5),
+      0 0 120px rgba(236, 72, 153, 0.3);
+  }
+}
+
+/* Scanning Animation */
+.scanning-container {
+  position: relative;
+  overflow: hidden;
 }
 
 .scanning-line {
   position: absolute;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #ff69b4, transparent);
-  animation: scan 2s linear infinite;
+  height: 6px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 20%,
+    #fff 50%,
+    rgba(255, 255, 255, 0.3) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+  animation: scan 2s ease-in-out infinite;
 }
 
 @keyframes scan {
-  0% { top: 0; }
-  100% { top: 100%; }
+  0%, 100% { top: 0; }
+  50% { top: 100%; }
 }
 
+.scanning-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(236, 72, 153, 0.5);
+  animation: scanPulse 1.5s ease-out infinite;
+}
+
+@keyframes scanPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Heart Beat Animation */
 .heart-beat {
   animation: heartbeat 1s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
 }
 
+/* Fade In Animation */
 .fade-in {
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.3s forwards;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.6s forwards;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Float Animation */
 .float {
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Shimmer Text */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #be185d 0%,
+    #ec4899 25%,
+    #f472b6 50%,
+    #ec4899 75%,
+    #be185d 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+  color: white;
+  font-weight: bold;
+  padding: 16px 40px;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Gift Card */
+.gift-card {
+  background: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+  border-radius: 24px;
+  box-shadow:
+    0 10px 40px rgba(236, 72, 153, 0.2),
+    0 0 0 1px rgba(236, 72, 153, 0.1);
+  overflow: hidden;
+}
+
+/* Sparkle Effect */
+.sparkle {
+  position: relative;
+}
+
+.sparkle::after {
+  content: '✨';
+  position: absolute;
+  font-size: 24px;
+  animation: sparkleAnim 2s ease-in-out infinite;
+}
+
+@keyframes sparkleAnim {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 6px;
+  background: rgba(236, 72, 153, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899, #f472b6);
+  border-radius: 3px;
+  animation: progressAnim 3s ease-in-out forwards;
+}
+
+@keyframes progressAnim {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Checkmark Animation */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkPop 0.5s ease-out forwards;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.checkmark svg {
+  width: 40px;
+  height: 40px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: checkDraw 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes checkDraw {
+  to { stroke-dashoffset: 0; }
 }
