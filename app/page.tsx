@@ -395,7 +395,8 @@ export default function Home() {
                   bottom: "20px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  padding: "14px 28px",
+                  padding: "16px 50px",
+                  minWidth: "250px",
                   background: "linear-gradient(135deg, #ec4899 0%, #be185d 100%)",
                   color: "white",
                   fontSize: "18px",
@@ -403,7 +404,8 @@ export default function Home() {
                   borderRadius: "9999px",
                   border: "none",
                   boxShadow: "0 4px 15px rgba(236, 72, 153, 0.4)",
-                  cursor: "pointer"
+                  cursor: "pointer",
+                  whiteSpace: "nowrap"
                 }}
               >
                 🏍️ ოთახში ნახვა
