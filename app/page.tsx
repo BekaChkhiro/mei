@@ -44,6 +44,19 @@ export default function Home() {
     };
   }, [stage]);
 
+  // Load model-viewer script
+  useEffect(() => {
+    if (stage === "gift") {
+      const existingScript = document.querySelector('script[src*="model-viewer"]');
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.type = "module";
+        script.src = "https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js";
+        document.head.appendChild(script);
+      }
+    }
+  }, [stage]);
+
   // Petals effect for gift stage
   useEffect(() => {
     if (stage === "gift") {
@@ -258,13 +271,7 @@ export default function Home() {
   // Gift Stage - AR
   if (stage === "gift") {
     return (
-      <>
-        <script
-          type="module"
-          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-        />
-
-        <main className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+      <main className="min-h-screen flex flex-col items-center justify-center p-4 relative">
           <div className="text-center mb-4 fade-in z-10">
             <h1 className="text-2xl md:text-4xl font-bold text-pink-800 mb-2">
               შენი საჩუქარი 🎁
@@ -285,8 +292,15 @@ export default function Home() {
               auto-rotate
               shadow-intensity="1"
               ar-scale="auto"
+              loading="eager"
               style={{ width: "100%", height: "100%", backgroundColor: "#fce4ec" }}
             >
+              <div className="absolute inset-0 flex items-center justify-center" slot="poster">
+                <div className="text-center">
+                  <div className="text-4xl mb-4 heart-beat">🎁</div>
+                  <p className="text-pink-600">იტვირთება...</p>
+                </div>
+              </div>
               <button
                 type="button"
                 slot="ar-button"
@@ -315,7 +329,6 @@ export default function Home() {
             💡 3D მოდელი შეგიძლია თითით მოატრიალო
           </p>
         </main>
-      </>
     );
   }
 
