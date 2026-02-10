@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import confetti from "canvas-confetti";
-import Script from "next/script";
 
 type Stage = "camera" | "scanning" | "valentine" | "celebration" | "gift";
 
@@ -260,10 +259,9 @@ export default function Home() {
   if (stage === "gift") {
     return (
       <>
-        <Script
+        <script
           type="module"
           src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-          strategy="beforeInteractive"
         />
 
         <main className="min-h-screen flex flex-col items-center justify-center p-4 relative">
@@ -276,39 +274,45 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="w-full max-w-lg h-[60vh] rounded-3xl overflow-hidden shadow-2xl border-4 border-pink-300 relative">
+          <div className="w-full max-w-lg h-[60vh] rounded-3xl overflow-hidden shadow-2xl border-4 border-pink-300">
             {/* @ts-ignore */}
             <model-viewer
-              id="bike-model"
               src="/bike.glb"
               ar
-              ar-modes="webxr scene-viewer quick-look"
+              ar-modes="scene-viewer webxr quick-look"
               camera-controls
               touch-action="pan-y"
               auto-rotate
               shadow-intensity="1"
+              ar-scale="auto"
               style={{ width: "100%", height: "100%", backgroundColor: "#fce4ec" }}
             >
+              <button
+                type="button"
+                slot="ar-button"
+                style={{
+                  position: "absolute",
+                  bottom: "16px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  padding: "12px 24px",
+                  backgroundColor: "#ec4899",
+                  color: "white",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  borderRadius: "9999px",
+                  border: "none",
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  cursor: "pointer"
+                }}
+              >
+                🏍️ ოთახში ნახვა (AR)
+              </button>
             </model-viewer>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              const modelViewer = document.getElementById("bike-model") as any;
-              if (modelViewer && modelViewer.activateAR) {
-                modelViewer.activateAR();
-              } else {
-                alert("AR მხარდაჭერილი არ არის ამ მოწყობილობაზე");
-              }
-            }}
-            className="mt-6 px-8 py-4 bg-pink-500 hover:bg-pink-600 text-white text-xl font-bold rounded-full shadow-lg"
-          >
-            🏍️ ოთახში ნახვა (AR)
-          </button>
-
           <p className="mt-4 text-pink-600 text-center text-sm">
-            💡 დააჭირე ბაიკის რეალურ ზომაში სანახავად
+            💡 3D მოდელი შეგიძლია თითით მოატრიალო
           </p>
         </main>
       </>
