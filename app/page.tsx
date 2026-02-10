@@ -263,6 +263,7 @@ export default function Home() {
         <Script
           type="module"
           src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+          strategy="beforeInteractive"
         />
 
         <main className="min-h-screen flex flex-col items-center justify-center p-4 relative">
@@ -275,9 +276,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="w-full max-w-lg h-[60vh] rounded-3xl overflow-hidden shadow-2xl border-4 border-pink-300">
+          <div className="w-full max-w-lg h-[60vh] rounded-3xl overflow-hidden shadow-2xl border-4 border-pink-300 relative">
             {/* @ts-ignore */}
             <model-viewer
+              id="bike-model"
               src="/bike.glb"
               ar
               ar-modes="webxr scene-viewer quick-look"
@@ -287,17 +289,26 @@ export default function Home() {
               shadow-intensity="1"
               style={{ width: "100%", height: "100%", backgroundColor: "#fce4ec" }}
             >
-              <button
-                slot="ar-button"
-                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white text-lg font-bold rounded-full shadow-lg"
-              >
-                🏍️ ოთახში ნახვა (AR)
-              </button>
             </model-viewer>
           </div>
 
+          <button
+            type="button"
+            onClick={() => {
+              const modelViewer = document.getElementById("bike-model") as any;
+              if (modelViewer && modelViewer.activateAR) {
+                modelViewer.activateAR();
+              } else {
+                alert("AR მხარდაჭერილი არ არის ამ მოწყობილობაზე");
+              }
+            }}
+            className="mt-6 px-8 py-4 bg-pink-500 hover:bg-pink-600 text-white text-xl font-bold rounded-full shadow-lg"
+          >
+            🏍️ ოთახში ნახვა (AR)
+          </button>
+
           <p className="mt-4 text-pink-600 text-center text-sm">
-            💡 დააჭირე "ოთახში ნახვა" ბაიკის რეალურ ზომაში სანახავად
+            💡 დააჭირე ბაიკის რეალურ ზომაში სანახავად
           </p>
         </main>
       </>
