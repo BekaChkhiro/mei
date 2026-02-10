@@ -162,12 +162,7 @@ body {
 
 /* Float Animation */
 .float {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  /* animation disabled */
 }
 
 /* Shimmer Text */
@@ -289,12 +284,12 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   animation: checkPop 0.5s ease-out forwards;
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
 }
 
 @keyframes checkPop {

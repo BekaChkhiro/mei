@@ -275,7 +275,7 @@ export default function Home() {
             </svg>
           </div>
 
-          <p className="text-xl text-emerald-600 font-semibold mb-8 fade-in-delay">
+          <p className="text-xl text-pink-600 font-semibold mb-8 fade-in-delay">
             სილამაზე დადასტურდა! ✨
           </p>
 
